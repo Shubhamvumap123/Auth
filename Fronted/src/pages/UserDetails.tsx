@@ -1,5 +1,5 @@
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function UserDetails() {
