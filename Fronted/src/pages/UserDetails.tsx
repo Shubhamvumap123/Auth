@@ -6,9 +6,7 @@ export default function UserDetails() {
   const { user, logout, updateUser } = useAuth();
   const [editing, setEditing] = useState(false);
   const [formData, setFormData] = useState({
-    ...user!,
-    phone: "9876543211",
-    address: "Bengluru, Karnataka, India",
+    ...user!
   });
   const [error, setError] = useState("");
 
@@ -69,23 +67,6 @@ export default function UserDetails() {
           )}
         </div>
 
-        <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Phone</label>
-          <input
-            className="w-full px-3 py-2 border rounded"
-            value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            disabled={!editing}
-          />
-
-          <label className="block text-sm font-medium text-gray-700">Address</label>
-          <textarea
-            className="w-full px-3 py-2 border rounded"
-            value={formData.address}
-            onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-            disabled={!editing}
-          />
-        </div>
 
         {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
