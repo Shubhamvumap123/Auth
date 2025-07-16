@@ -20,21 +20,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Check session or token here
     const storedUser = localStorage.getItem("user");
     if (storedUser) setUser(JSON.parse(storedUser));
   }, []);
 
-  const login = async (email: string, password: string) => {
-    const res = await axios.post("http://localhost:3000/api/login", { email, password });
-    setUser(res.data.user);
-    localStorage.setItem("user", JSON.stringify(res.data.user));
-  };
+const login = async (email: string, password: string) => {
+  const res = await axios.post("http://localhost:3000/api/login", { email, password });
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
-  };
+  // Save user and token
+  setUser(res.data.user);
+  localStorage.setItem("user", JSON.stringify(res.data.user));
+  localStorage.setItem("token", res.data.token);
+};
+
+const logout = () => {
+  // Clear user and token
+  setUser(null);
+  localStorage.removeItem("user");
+
+  localStorage.removeItem("token");
+};
+
 
   const updateUser = (user: User) => {
     setUser(user);

@@ -11,9 +11,10 @@ export default function UserDetails() {
   const [error, setError] = useState("");
 
  const handleSave = async () => {
+  console.log("hello")
   try {
     const token = localStorage.getItem("token");
-
+console.log("token",token)
     const res = await axios.put(
       "http://localhost:3000/api/me",
       formData,
@@ -23,7 +24,7 @@ export default function UserDetails() {
         },
       }
     );
-
+console.log("Update response:", res.data);
     if (res.data?.user) {
       updateUser(res.data.user);
       setEditing(false);
