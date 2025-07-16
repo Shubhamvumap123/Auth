@@ -83,9 +83,7 @@ export default function UserDetails() {
                 onClick={() => {
                   setEditing(false);
                   setFormData({
-                    ...user!,
-                    phone: "123-456-7890",
-                    address: "123 Main St, City, Country",
+                    ...user!
                   });
                   setError("");
                 }}
