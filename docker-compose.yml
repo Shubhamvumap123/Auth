@@ -1,24 +1,24 @@
 
 services:
   backend:
-    build: ./backend
+    build: ./Backend
     ports:
       - "3000:3000"
     env_file:
-      - ./backend/.env
+      - ./Backend/.env
     volumes:
-      - ./backend:/app
+      - ./Backend:/app
     depends_on:
       - db
     networks:
       - app-network
 
   frontend:
-    build: ./frontend
+    build: ./Fronted
     ports:
       - "5173:5173"
     volumes:
-      - ./frontend:/app
+      - ./Fronted:/app
     depends_on:
       - backend
     networks:
@@ -32,7 +32,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: auth_db
+      MYSQL_DATABASE: testdb
     volumes:
       - db-data:/var/lib/mysql
     networks:
