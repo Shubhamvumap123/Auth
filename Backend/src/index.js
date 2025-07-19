@@ -27,7 +27,10 @@ app.use(express.json());
 
 app.use('/api', authRoutes);
 
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+try {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+} catch (err) {
+  console.error("Server crashed:", err);
+}

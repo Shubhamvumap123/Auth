@@ -1,9 +1,9 @@
 const pool = require('../config/db');
 const jwt = require('jsonwebtoken');
 const { generateToken } = require('../utils/token');
-
-// Load environment variables
-require('dotenv').config();
+require('dotenv').config({
+  quiet: true,
+});
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;

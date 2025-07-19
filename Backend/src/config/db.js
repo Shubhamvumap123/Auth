@@ -1,4 +1,6 @@
-require('dotenv').config(); // Load .env variables
+require('dotenv').config({
+  quiet: true,
+});
 
 const mysql = require('mysql2/promise');
 
